@@ -10,7 +10,7 @@ const Intro: React.FC<{}> = () => {
 
   return (
     <Layout>
-      <main className="min-h-screen flex flex-col justify-and py-16 md:py-32">
+      <main className="min-h-screen flex flex-col justify-around py-16 md:py-32">
         <h1 className="text-3xl py-2">Hi there!👋</h1>
         <h2 className="text-3xl py-2">
           I am <span className="font-bold">Sanket Manmode</span>, a software
