@@ -26,7 +26,7 @@ const Header: React.FC<{}> = () => {
             alt="moon"
             height={30}
             width={30}
-            className="hover:cursor-pointer"
+            className="hover:cursor-pointer "
             onClick={() =>
               dispatch({ type: "MODE_CHANGE", payload: { mode: "moon" } })
             }
