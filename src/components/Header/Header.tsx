@@ -3,6 +3,9 @@ import { useData } from "../../context/DataContext";
 import Layout from "../Layout/Layout";
 import Image from "next/image";
 
+import Sun from "../../../public/sun.svg";
+import Moon from "../../../public/moon.svg";
+
 const Header: React.FC<{}> = () => {
   const { data, dispatch } = useData();
   return (
@@ -11,7 +14,7 @@ const Header: React.FC<{}> = () => {
         <h1 className="font-bold text-3xl py-2">manmodesanket</h1>
         {data.mode === "moon" ? (
           <Image
-            src="/sun.svg"
+            src={Sun}
             alt="sun"
             height={30}
             width={30}
@@ -22,7 +25,7 @@ const Header: React.FC<{}> = () => {
           />
         ) : (
           <Image
-            src="/moon.svg"
+            src={Moon}
             alt="moon"
             height={30}
             width={30}
