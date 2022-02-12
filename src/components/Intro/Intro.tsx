@@ -10,12 +10,12 @@ const Intro: React.FC<{}> = () => {
 
   return (
     <Layout>
-      <main className="min-h-screen flex flex-col justify-around">
+      <main className="min-h-screen flex flex-col justify-around px-2 md:px-0">
         <section className="mb-4 md:mb-0">
           <h2 className="text-3xl py-2">Hi there!👋</h2>
         </section>
         <section className="mb-8 md:mb-0">
-          <h2 className="text-3xl py-2">
+          <h2 className="text-2xl py-2">
             I am <span className="font-bold">Sanket Manmode</span>, a software
             enginner. Welcome to my space on internet. I am focused on learning
             how to build websites with great user experience and performance. I
