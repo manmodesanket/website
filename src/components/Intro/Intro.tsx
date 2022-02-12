@@ -6,9 +6,6 @@ const Intro: React.FC<{}> = () => {
     twitter: "https://twitter.com/_manmodesanket",
     github: "https://github.com/manmodesanket",
     linkedin: "https://www.linkedin.com/in/manmodesanket/",
-    medium: "https://manmodesanket.medium.com/",
-    peerlist: "https://peerlist.io/sanket",
-    polywork: "https://www.polywork.com/manmodesanket",
   };
 
   return (
