@@ -12,8 +12,6 @@ const SunIcon: React.FC<{}> = () => {
     <Image
       src={Sun}
       alt="sun"
-      height={30}
-      width={30}
       className="hover:cursor-pointer"
       onClick={() =>
         dispatch({ type: "MODE_CHANGE", payload: { mode: "sun" } })
@@ -28,8 +26,6 @@ const MoonIcon: React.FC<{}> = () => {
     <Image
       src={Moon}
       alt="moon"
-      height={30}
-      width={30}
       className="hover:cursor-pointer "
       onClick={() =>
         dispatch({ type: "MODE_CHANGE", payload: { mode: "moon" } })
