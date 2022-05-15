@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Header, Intro } from "../components/Intro";
+import { Header, Intro } from "../components/Index";
 import { useData } from "../context/DataContext";
 
 const Home: NextPage = () => {
@@ -16,9 +16,9 @@ const Home: NextPage = () => {
           content="I am Sanket Manmode a software
             enginner. Welcome to my space on internet."
         />
-        <link rel="icon" href="/favicon-one.ico" />
+        <link rel="icon" href="/ms.svg" />
       </Head>
-      <div className="w-full min-h-screen bg-white dark:bg-slate-800 dark:text-slate-200">
+      <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />
         <Intro />
       </div>
