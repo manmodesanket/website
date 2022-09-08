@@ -12,18 +12,18 @@ const Intro: React.FC<{}> = () => {
     <Layout>
       <main className="flex flex-col justify-around md:px-0">
         <section className="md:mb-0 my-8">
-          <h2 className="text-3xl py-2">Hi there!👋</h2>
+          <h2 className="py-2">Hi there!👋</h2>
         </section>
         <section className="md:mb-0 my-8">
-          <p className="text-xl py-2">
+          <p className="py-2">
             I am <span className="font-bold">Sanket Manmode</span>, a software
             enginner. Welcome to my space on internet. I am focused on learning
             how to build websites with great user experience and performance. I
             love JavaScript and I strive to know it better.
           </p>
         </section>
-        <section className="text-xl mb-8 md:mb-0 my-8">
-          <h2 className="text-3xl font-bold mb-4">Background</h2>
+        <section className="mb-8 md:mb-0 my-8">
+          <h2 className="font-bold mb-4">Background</h2>
           <p className="mb-4">
             I am a Frontend Engineer at{" "}
             <Link link="https://ridecell.com/" text="Ridecell" /> building
@@ -37,11 +37,11 @@ const Intro: React.FC<{}> = () => {
           </p>
           <p className="mb-4">My mantra is make things easy for others.</p>
         </section>
-        <section className="text-2xl mb-8 md:mb-0 my-8">
+        <section className="mb-8 md:mb-0 my-8">
           <p>You can find me at:</p>
           <ul className="flex space-x-2">
             {Object.keys(socials).map((item) => (
-              <li key={`${item}_link`} className="underline">
+              <li key={`${item}_link`}>
                 <Link link={socials[item]} text={item} />
               </li>
             ))}

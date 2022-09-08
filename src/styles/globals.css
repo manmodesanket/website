@@ -1,3 +1,80 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-ascent: rgb(248, 248, 248);
+  --color-blue: rgb(0, 112, 243);
+}
+
+[data-theme="dark"] {
+  --color-ascent: rgb(248, 248, 248);
+  --color-blue: rgb(32, 136, 255);
+}
+
+@layer base {
+  :root {
+    --color-ascent: 248 248 248;
+    --color-blue: 0, 112, 243;
+  }
+
+  [data-theme="dark"] {
+    --color-ascent: 248, 248, 248;
+    --color-blue: 32, 136, 255;
+  }
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1.25rem;
+}
+
+b {
+  font-weight: bolder;
+}
+
+code {
+  font-size: 0.9rem;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+a {
+  color: var(--color-blue);
+}

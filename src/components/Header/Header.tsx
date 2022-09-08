@@ -60,7 +60,7 @@ const Header: React.FC<{}> = () => {
   return (
     <Layout>
       <header className="w-full flex justify-between items-center">
-        <h1 className="font-bold font-sans italic text-6xl py-2">ms</h1>
+        <h1 className="italic text-6xl py-2">ms</h1>
         {data.mode === "moon" ? <SunIcon /> : <MoonIcon />}
       </header>
     </Layout>
