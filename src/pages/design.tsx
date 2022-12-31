@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 import { Header, Layout } from "../components/Index";
 import { useData } from "../context/DataContext";
 
@@ -57,6 +58,7 @@ const Design: NextPage = () => {
           </p>
         </Layout>
       </div>
+      <Analytics />
     </div>
   );
 };
