@@ -17,7 +17,7 @@ const Intro: React.FC<{}> = () => {
         <section className="md:mb-0 my-8">
           <p className="py-2">
             I am <span className="font-bold">Sanket Manmode</span>, a software
-            enginner. Welcome to my space on internet. I am focused on learning
+            engineer. Welcome to my space on internet. I am focused on learning
             how to build websites with great user experience and performance. I
             love JavaScript and I strive to know it better.
           </p>

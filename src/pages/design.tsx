@@ -47,7 +47,11 @@ const Design: NextPage = () => {
         <Layout>
           <p>
             Here is my{" "}
-            <a href="https://github.com/manmodesanket" target="_blank">
+            <a
+              href="https://github.com/manmodesanket"
+              target="_blank"
+              rel="noreferrer"
+            >
               Github
             </a>
           </p>

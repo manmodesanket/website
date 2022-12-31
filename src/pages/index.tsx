@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <meta
           name="description"
           content="I am Sanket Manmode a software
-            enginner. Welcome to my space on internet."
+            engineer. Welcome to my space on internet."
         />
         <link rel="icon" href="/ms.svg" />
       </Head>
