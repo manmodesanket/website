@@ -11,7 +11,7 @@ author: You
 Recently I started to read the book Eloquent JavaScript where I came across this concept called closure. And I have to say I was really impressed with this feature in JavaScript.
 
 In this article we will learn about the concept of Closure in JavaScript with few examples. We will do a code walkthrough as well.
- 
+
 Maybe you will learn few things about functions as well.
 
 In the end I hope you will have clear mental model about Closures in JavaScript.
@@ -25,38 +25,54 @@ Before taking dive into closure, I want you to understand two things about funct
 
 See the following example,
 
+```js
+function handleTrophies() {
+  let trophies = 0;
+  trophies += 1;
+  console.log(trophies);
+}
+handleTrophies(); // --> 1
+handleTrophies(); // --> 1
+```
 
-
-%[https://gist.github.com/manmodesanket/e2cf46c028022fb441f5e8a701e5b8b0]
-
-
-
-The function *handleTrophies* re-creates value of trophies variable every time it is called. That is why however many times we call the *handleTrophies* functions the same value will be console logged. It will never be more than one.
+The function _handleTrophies_ re-creates value of trophies variable every time it is called. That is why however many times we call the _handleTrophies_ functions the same value will be console logged. It will never be more than one.
 
 Let's move on to the second point.
 
 **The second point is, in JavaScript, functions are not only syntax but value as well. They can be assigned to variables.**
 
+```js
+function outer() {
+  function inner() {}
+  return inner;
+}
+const fncall = outer();
+console.log(fncall); // ƒ inner () {}
+```
 
-%[https://gist.github.com/manmodesanket/f6e17983195ff85d18f78e69a20dc1e5]
+We can see that _fncallholds_ the value which is a function.
 
-
-We can see that *fncallholds* the value which is a function.
-
-If we will write it as *fncall()*, it will work as a function.
-
+If we will write it as _fncall()_, it will work as a function.
 
 ## Notion of Closure
 
 These two points above brings an interesting question, what happens to the local values when the function that created them is no longer active?
 
-%[https://gist.github.com/manmodesanket/2fbbce9d7405d0abdafce43b4f0dcb4f]
+```js
+function outer() {
+  let temp = 10;
+  function inner() {
+    return temp;
+  }
+  return inner;
+}
+const fncall = outer();
+console.dir(fncall);
+```
 
-
-In the above example, *fncall*  holds function called *inner* as a value which is returned by a function called *outer* . The function *outer* is now no longer active.
+In the above example, _fncall_ holds function called _inner_ as a value which is returned by a function called *outer* . The function _outer_ is now no longer active.
 
 The output of above code snippet is as follows.
-
 
 ![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1622567697421/9hH9uaAKi.png)
 
@@ -70,36 +86,50 @@ So the main feature of closure would be it allows to remember values from comple
 
 Lets look at another example to understand closure better.
 
-%[https://gist.github.com/manmodesanket/7a2f04ac4b3ef5696c5d13220407d426]
-
+```js
+function updateLike() {
+  let like = 5;
+  function handleLike() {
+    like += 1;
+    return like;
+  }
+  return handleLike;
+}
+let call_one = updateLike();
+let call_two = updateLike();
+console.log(call_one()); // 6 --- point 1
+console.log(call_two()); // 6 --- point 2
+console.log(call_one()); // 7 --- point 3
+console.log(call_two()); // 7 --- point 4
+```
 
 Code walkthrough:
-1. *call_one* has the *handleLike* function body as its value.
 
-2. *call_two* as well has *handleLike* function body as its value.
+1. _call_one_ has the _handleLike_ function body as its value.
 
-3. But both these values stored in *call_one* and *call_two* are not same. Because, the function calls made to *updateLike* were made separately and it returned a brand new *handleLike* function as a value each time.
+2. _call_two_ as well has _handleLike_ function body as its value.
 
-4. When we execute *call_one()* , we are executing the function which *call_one* has in its value. At point 1, before executing the statement,  the value of like stored in closure of *call_one* is 5. 
+3. But both these values stored in _call_one_ and _call_two_ are not same. Because, the function calls made to _updateLike_ were made separately and it returned a brand new _handleLike_ function as a value each time.
 
-5. While executing the statement at point 1, the value of like is incremented to 6 from 5 and stored in the scope of *call_one* as closure.
+4. When we execute *call_one()* , we are executing the function which _call_one_ has in its value. At point 1, before executing the statement, the value of like stored in closure of _call_one_ is 5.
+
+5. While executing the statement at point 1, the value of like is incremented to 6 from 5 and stored in the scope of _call_one_ as closure.
 
 6. Similarly it will update to 7 at point 3.
 
-7. Now at point 2, before executing the statement the value of like in closure of *call_two* is 5 and not 6. And then it will be updated to 6.
+7. Now at point 2, before executing the statement the value of like in closure of _call_two_ is 5 and not 6. And then it will be updated to 6.
 
 8. Similarly it will be updated to 7 at point 4.
 
 I hope this example give you a good mental model.
 
-
 ## Points to remember about Closure.
 
-1. Closure are property of JavaScript function alone. 
+1. Closure are property of JavaScript function alone.
 
-2. When called the function body(in our example *handleLike*) sees the environment in which it was created and not in the environment it is called.
+2. When called the function body(in our example _handleLike_) sees the environment in which it was created and not in the environment it is called.
 
-3. The inner function(in our example *handleLike* or inner) has access to inner variables, the outer function variables and global variables.
+3. The inner function(in our example _handleLike_ or inner) has access to inner variables, the outer function variables and global variables.
 
 4. In JavaScript, closures are created every time a function is created, at function creation time.
 

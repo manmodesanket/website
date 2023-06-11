@@ -2,8 +2,9 @@ import React from "react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { components } from "./MdxComponents";
-import { Layout } from "../../components/Index";
+import { Header, Layout } from "../../components/Index";
 import { getAllPosts, getPostBySlug } from "./api";
+import { useData } from "../../context/DataContext";
 
 type Post = {
   title: string;
@@ -37,13 +38,21 @@ export async function getStaticProps(context: { params: any }) {
 }
 
 const Intro: React.FC<{ post: Post; slug: string }> = ({ post, slug }) => {
+  const {
+    data: { mode },
+  } = useData();
   return (
-    <Layout>
-      <main className="flex flex-col justify-around md:px-0">
-        <h1>{post.title}</h1>
-        <MDXRemote {...post.source} components={components} />
-      </main>
-    </Layout>
+    <div className={mode === "moon" ? "dark" : ""}>
+      <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
+        <Header />
+        <Layout>
+          <main className="flex flex-col justify-around md:px-0">
+            <h1>{post.title}</h1>
+            <MDXRemote {...post.source} components={components} />
+          </main>
+        </Layout>
+      </div>
+    </div>
   );
 };
 

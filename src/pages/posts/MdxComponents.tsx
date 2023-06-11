@@ -1,4 +1,5 @@
 import NextLink from "next/link";
+import type { ImageProps } from "next/image";
 
 export const components = {
   h1: (props: any) => <h2 {...props} />,
@@ -15,7 +16,7 @@ export const components = {
   },
   ul: (props: any) => <ul {...props} />,
   ol: (props: any) => <ol {...props} />,
-  strong: (props: any) => <strong {...props} />,
+  strong: (props: any) => <strong className="font-semibold" {...props} />,
   blockquote: (props: any) => <blockquote {...props} />,
   del: (props: any) => <del {...props} />,
 };
