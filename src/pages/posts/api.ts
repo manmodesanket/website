@@ -2,18 +2,13 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
-type Post =
-  | {
-      title: string;
-      date: string;
-      slug: string;
-    }
-  | {
-      title: string;
-      date: string;
-      slug: string;
-      content: string;
-    };
+export type Post = {
+  title: string;
+  date: string;
+  description: string;
+  slug: string;
+  content: string;
+};
 
 const postsDirectory = join(process.cwd(), "src/posts");
 
@@ -27,26 +22,27 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const items: Post | {} = {};
-
+  const postData: Post = {
+    title: "",
+    date: "",
+    slug: "",
+    content: "",
+    description: "",
+  };
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === "slug") {
-      /* @ts-ignore */
-      items[field] = realSlug;
-    }
-    if (field === "content") {
-      /* @ts-ignore */
-      items[field] = content;
-    }
-
-    if (data[field]) {
-      /* @ts-ignore */
-      items[field] = data[field];
+      postData[field] = realSlug;
+    } else if (field === "content") {
+      postData[field] = content;
+    } else if (field === "title" && data[field]) {
+      postData[field] = data[field];
+    } else if (field === "description" && data[field]) {
+      postData[field] = data[field];
     }
   });
 
-  return items;
+  return postData;
 }
 
 export function getAllPosts(fields: string[] = []) {

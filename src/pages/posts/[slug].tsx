@@ -1,14 +1,16 @@
 import React from "react";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { components } from "./MdxComponents";
 import { Layout } from "../../components/Index";
 import { getAllPosts, getPostBySlug } from "./api";
-import { MDXProvider } from "@mdx-js/react";
-import { components } from "./MdxComponents";
 
 type Post = {
   title: string;
-  date: string;
-  slug: string;
-  content: string;
+  source: MDXRemoteSerializeResult<
+    Record<string, unknown>,
+    Record<string, unknown>
+  >;
 };
 
 export async function getStaticPaths() {
@@ -27,18 +29,19 @@ export async function getStaticProps(context: { params: any }) {
   const { params } = context;
   const { slug } = params;
   const post = getPostBySlug(slug, ["title", "date", "slug", "content"]);
+  const mdxSource = await serialize(post.content);
+  const postTitle = post.title;
   return {
-    props: { post, slug }, // will be passed to the page component as props
+    props: { post: { title: postTitle, source: mdxSource }, slug }, // will be passed to the page component as props
   };
 }
 
 const Intro: React.FC<{ post: Post; slug: string }> = ({ post, slug }) => {
-  console.log(post);
   return (
     <Layout>
       <main className="flex flex-col justify-around md:px-0">
         <h1>{post.title}</h1>
-        <MDXProvider components={components}>{post.content}</MDXProvider>
+        <MDXRemote {...post.source} components={components} />
       </main>
     </Layout>
   );
