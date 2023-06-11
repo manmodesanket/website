@@ -20,7 +20,6 @@ export async function getStaticProps() {
 }
 
 function PostPage({ posts }: { posts: Post[] }) {
-  console.log(posts);
   return (
     <div>
       <Layout>
