@@ -11,6 +11,7 @@ function PostPage({ posts }: { posts: Post[] }) {
   const {
     data: { mode },
   } = useData();
+
   return (
     <div className={mode === "moon" ? "dark" : ""}>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">

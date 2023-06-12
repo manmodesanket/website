@@ -1,12 +1,12 @@
 import NextLink from "next/link";
-import type { ImageProps } from "next/image";
 
 export const components = {
-  h1: (props: any) => <h2 {...props} />,
-  h2: (props: any) => <h3 {...props} />,
-  h3: (props: any) => <h4 {...props} />,
-  h4: (props: any) => <h5 {...props} />,
-  hr: (props: any) => <hr {...props} />,
+  h1: (props: any) => <h2 className="mb-8" {...props} />,
+  h2: (props: any) => <h3 className="mb-4" {...props} />,
+  h3: (props: any) => <h4 className="mb-4" {...props} />,
+  h4: (props: any) => <h5 className="mb-4" {...props} />,
+  hr: (props: any) => <hr className="mb-4" {...props} />,
+  p: (props: any) => <p className="mb-4" {...props} />,
   a: ({ href = "", ...props }) => {
     if (href.startsWith("http")) {
       return <a href={href} target="_blank" rel="noreferrer" {...props} />;
@@ -14,7 +14,7 @@ export const components = {
 
     return <NextLink href={href} {...props} />;
   },
-  ul: (props: any) => <ul {...props} />,
+  ul: (props: any) => <ul className="mb-4" {...props} />,
   ol: (props: any) => <ol {...props} />,
   strong: (props: any) => <strong className="font-semibold" {...props} />,
   blockquote: (props: any) => <blockquote {...props} />,

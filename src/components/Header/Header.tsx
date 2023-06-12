@@ -56,7 +56,7 @@ const MoonIcon: React.FC<{}> = () => {
 };
 
 const Header: React.FC<{}> = () => {
-  const { data, dispatch } = useData();
+  const { data } = useData();
   return (
     <Layout>
       <header className="w-full flex justify-between items-center">

@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   const {
     data: { mode },
   } = useData();
+  console.log("main page", mode);
   return (
     <div className={mode === "moon" ? "dark" : ""}>
       <Head>
