@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import rehypePrism from "rehype-prism-plus";
@@ -7,6 +7,7 @@ import { components } from "./MdxComponents";
 import { Header, Layout } from "../../components/Index";
 import { getAllPosts, getPostBySlug } from "./api";
 import { useData } from "../../context/DataContext";
+import axios from "axios";
 
 type Post = {
   title: string;
@@ -47,6 +48,34 @@ const Intro: React.FC<{ post: Post; slug: string }> = ({ post, slug }) => {
   const {
     data: { mode },
   } = useData();
+  const [likes, setLikes] = useState(0);
+
+  const likePost = async () => {
+    try {
+      const url: string = process.env.NEXT_PUBLIC_DB_HOST + `/${slug}/likes`;
+      const result = await axios.post(url);
+      if (result && result.data && result.data.success) {
+        setLikes(result.data.likes);
+      }
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    const getComments = async (postId: string) => {
+      try {
+        const url: string =
+          process.env.NEXT_PUBLIC_DB_HOST + `/${postId}/likes`;
+        const result = await axios.get(url);
+        if (result && result.data && result.data.success) {
+          setLikes(result.data.likes);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getComments(slug);
+  }, [slug]);
+
   return (
     <div className={mode === "moon" ? "dark" : ""}>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
@@ -55,7 +84,10 @@ const Intro: React.FC<{ post: Post; slug: string }> = ({ post, slug }) => {
           <main className="flex flex-col justify-around md:px-0">
             <h1 className="mb-4">{post.title}</h1>
             <MDXRemote {...post.source} components={components} />
+            <section></section>
           </main>
+          <button onClick={likePost}>Like</button>
+          <div> Likes: {likes}</div>
         </Layout>
       </div>
     </div>
