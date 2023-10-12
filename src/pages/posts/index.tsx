@@ -1,5 +1,4 @@
 import { Header, Layout } from "../../components/Index";
-import { useData } from "../../context/DataContext";
 import { getAllPosts, Post } from "./api";
 
 export async function getStaticProps() {
@@ -8,12 +7,8 @@ export async function getStaticProps() {
 }
 
 function PostPage({ posts }: { posts: Post[] }) {
-  const {
-    data: { mode },
-  } = useData();
-
   return (
-    <div className={mode === "moon" ? "dark" : ""}>
+    <div>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />
         <Layout>
