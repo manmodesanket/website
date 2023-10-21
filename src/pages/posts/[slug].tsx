@@ -4,7 +4,8 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import rehypePrism from "rehype-prism-plus";
 import rehypeCodeTitles from "rehype-code-titles";
 import { components } from "./MdxComponents";
-import { Header, Layout } from "../../components";
+import Layout from "../../components/Layout/Layout";
+import Header from "../../components/Header/Header";
 import { getAllPosts, getPostBySlug } from "./api";
 
 type Post = {
