@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
-import { Header, Layout } from "../components";
+import Header from "../components/Header/Header";
+import Layout from "../components/Layout/Layout";
 
 const Design: NextPage = () => {
   return (
