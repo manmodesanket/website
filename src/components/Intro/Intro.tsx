@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Layout } from "..";
+import { Link, Layout } from "../index";
 
 const Intro: React.FC<{}> = () => {
   const socials: any = {
