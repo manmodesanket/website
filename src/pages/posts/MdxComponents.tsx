@@ -1,6 +1,8 @@
 import NextLink from "next/link";
+import Image from "next/image";
 
 export const components = {
+  Image,
   h1: (props: any) => <h2 className="mb-8" {...props} />,
   h2: (props: any) => <h3 className="mb-4" {...props} />,
   h3: (props: any) => <h4 className="mb-4" {...props} />,

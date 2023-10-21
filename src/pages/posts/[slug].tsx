@@ -4,7 +4,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import rehypePrism from "rehype-prism-plus";
 import rehypeCodeTitles from "rehype-code-titles";
 import { components } from "./MdxComponents";
-import { Header, Layout } from "../../components/Index";
+import { Header, Layout } from "../../components";
 import { getAllPosts, getPostBySlug } from "./api";
 
 type Post = {
@@ -51,7 +51,6 @@ const Intro: React.FC<{ post: Post; slug: string }> = ({ post, slug }) => {
           <main className="flex flex-col justify-around md:px-0">
             <h1 className="mb-4">{post.title}</h1>
             <MDXRemote {...post.source} components={components} />
-            <section></section>
           </main>
         </Layout>
       </div>

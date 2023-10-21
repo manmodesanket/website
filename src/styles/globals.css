@@ -4,7 +4,7 @@
 
 :root {
   --color-ascent: rgb(248, 248, 248);
-  --color-blue: rgb(0, 112, 243);
+  --color-blue: rgb(49, 57, 251);
 }
 
 [data-theme="dark"] {
@@ -61,7 +61,7 @@ h6 {
 }
 
 p {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 b {
@@ -70,6 +70,18 @@ b {
 
 a {
   color: var(--color-blue);
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+li {
+  margin-bottom: calc(1.75rem / 2);
 }
 
 /* code block styles */

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Layout } from "../Index";
+import { Link, Layout } from "..";
 
 const Intro: React.FC<{}> = () => {
   const socials: any = {
@@ -39,13 +39,13 @@ const Intro: React.FC<{}> = () => {
         </section>
         <section className="mb-8 md:mb-0 my-8">
           <p>You can find me at:</p>
-          <ul className="flex space-x-2">
+          <div className="flex space-x-2">
             {Object.keys(socials).map((item) => (
-              <li key={`${item}_link`}>
-                <Link link={socials[item]} text={item} />
-              </li>
+              <span key={`${item}_link`}>
+                <a href={socials[item]}>{item}</a>
+              </span>
             ))}
-          </ul>
+          </div>
         </section>
       </main>
     </Layout>

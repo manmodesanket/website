@@ -1,7 +1,7 @@
 ---
-title: Closure in JavaScript.
+title: Closure in JavaScript
 date: 2023/6/23
-description: Closure in JavaScript.
+description: Closure in JavaScript
 tag: web development
 author: You
 ---
@@ -74,7 +74,14 @@ In the above example, _fncall_ holds function called _inner_ as a value which is
 
 The output of above code snippet is as follows.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1622567697421/9hH9uaAKi.png)
+<div style={{ margin: "1rem auto" }}>
+  <Image
+    src="/closure-blog-1.png"
+    width={500}
+    height={500}
+    alt="closure-blog-1"
+  />
+</div>
 
 We can see that closure has preserved value of **temp**.
 
@@ -125,7 +132,7 @@ I hope this example give you a good mental model.
 
 ## Points to remember about Closure.
 
-1. Closure are property of JavaScript function alone.
+1. Closure is property of JavaScript function alone.
 
 2. When called the function body(in our example _handleLike_) sees the environment in which it was created and not in the environment it is called.
 

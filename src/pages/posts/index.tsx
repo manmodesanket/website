@@ -1,4 +1,5 @@
-import { Header, Layout } from "../../components/Index";
+import Link from "next/link";
+import { Header, Layout } from "../../components";
 import { getAllPosts, Post } from "./api";
 
 export async function getStaticProps() {
@@ -12,12 +13,16 @@ function PostPage({ posts }: { posts: Post[] }) {
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />
         <Layout>
-          <h1>Posts</h1>
           {posts.map((item) => (
             <div key={item.slug} className="mb-4">
-              <h2>
-                <a href={`/posts/${item.slug}`}>{item.title}</a>
-              </h2>
+              <h3>
+                <Link
+                  className="text-black hover:underline"
+                  href={`/posts/${item.slug}`}
+                >
+                  {item.title}
+                </Link>
+              </h3>
               <p>{item.description}</p>
             </div>
           ))}
