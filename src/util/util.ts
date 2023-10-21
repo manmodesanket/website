@@ -52,8 +52,3 @@ export function getAllPosts(fields: string[] = []) {
   // .sort((post1, post2) => (post1.date > post2.date ? "-1" : "1"));
   return posts;
 }
-
-async function getStaticProps() {
-  const posts = getAllPosts(["title", "date", "slug"]);
-  return { props: { posts } };
-}

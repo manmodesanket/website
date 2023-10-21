@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Header from "../../components/Header/Header";
 import Layout from "../../components/Layout/Layout";
-import { getAllPosts, Post } from "./api";
+import { getAllPosts, Post } from "../../util/util";
 
 export async function getStaticProps() {
   const posts = getAllPosts(["title", "date", "slug", "description"]);
