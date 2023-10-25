@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Header from "../../components/Header/Header";
 import Layout from "../../components/Layout/Layout";
-import { getAllPosts, Post } from "../../util/util";
+import { getAllPosts, getDateInFormat, Post } from "../../util/util";
 
 export async function getStaticProps() {
   const posts = getAllPosts(["title", "date", "slug", "description"]);
@@ -9,12 +9,15 @@ export async function getStaticProps() {
 }
 
 function PostPage({ posts }: { posts: Post[] }) {
+  const sortedPosts = posts.sort((a, b) =>
+    new Date(a.date) > new Date(b.date) ? -1 : 1
+  );
   return (
     <div>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />
         <Layout>
-          {posts.map((item) => (
+          {sortedPosts.map((item) => (
             <div key={item.slug} className="mb-4">
               <h3>
                 <Link
@@ -24,6 +27,7 @@ function PostPage({ posts }: { posts: Post[] }) {
                   {item.title}
                 </Link>
               </h3>
+              <small>{getDateInFormat(item.date)}</small>
               <p>{item.description}</p>
             </div>
           ))}

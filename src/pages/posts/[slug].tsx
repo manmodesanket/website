@@ -6,10 +6,11 @@ import rehypeCodeTitles from "rehype-code-titles";
 import { components } from "../../components/MdxComponents";
 import Layout from "../../components/Layout/Layout";
 import Header from "../../components/Header/Header";
-import { getAllPosts, getPostBySlug } from "../../util/util";
+import { getAllPosts, getDateInFormat, getPostBySlug } from "../../util/util";
 
 type Post = {
   title: string;
+  date: string;
   source: MDXRemoteSerializeResult<
     Record<string, unknown>,
     Record<string, unknown>
@@ -38,19 +39,26 @@ export async function getStaticProps(context: { params: any }) {
     },
   });
   const postTitle = post.title;
+  const postDate = post.date;
   return {
-    props: { post: { title: postTitle, source: mdxSource }, slug }, // will be passed to the page component as props
+    props: {
+      post: { date: postDate, title: postTitle, source: mdxSource },
+      slug,
+    }, // will be passed to the page component as props
   };
 }
 
-const Intro: React.FC<{ post: Post; slug: string }> = ({ post, slug }) => {
+const Intro: React.FC<{ post: Post; slug: string }> = ({ post }) => {
   return (
     <div>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />
         <Layout>
           <main className="flex flex-col justify-around md:px-0">
-            <h1 className="mb-4">{post.title}</h1>
+            <div className="mb-4">
+              <h1>{post.title}</h1>
+              <p className="text-sm">{getDateInFormat(post.date)}</p>
+            </div>
             <MDXRemote {...post.source} components={components} />
           </main>
         </Layout>

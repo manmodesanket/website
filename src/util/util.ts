@@ -39,6 +39,8 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
       postData[field] = data[field];
     } else if (field === "description" && data[field]) {
       postData[field] = data[field];
+    } else if (field === "date" && data[field]) {
+      postData[field] = data[field];
     }
   });
 
@@ -51,4 +53,21 @@ export function getAllPosts(fields: string[] = []) {
   // // sort posts by date in descending order
   // .sort((post1, post2) => (post1.date > post2.date ? "-1" : "1"));
   return posts;
+}
+
+export function getDateInFormat(inputDateString: string) {
+  // Parse the input string into a Date object
+  const parts = inputDateString.split("/");
+  const year = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1; // Months are zero-based in JavaScript Date objects
+  const day = parseInt(parts[2], 10);
+  const inputDate = new Date(year, month, day);
+
+  // Format the date to '23 June 2023'
+  const outputDateString = inputDate.toLocaleDateString("default", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  return outputDateString;
 }
