@@ -1,15 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
-import { Header, Layout } from "../components/Index";
-import { useData } from "../context/DataContext";
+import Header from "../components/Header/Header";
+import Layout from "../components/Layout/Layout";
 
 const Design: NextPage = () => {
-  const {
-    data: { mode },
-  } = useData();
   return (
-    <div className={mode === "moon" ? "dark" : ""}>
+    <div>
       <Head>
         <title>Design - manmodesanket</title>
         <meta

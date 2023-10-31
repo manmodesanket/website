@@ -5,8 +5,10 @@ export const dataReducer = (state: GLOBAL_STATE, action: ACTIONS) => {
     case "MODE_CHANGE":
       if (action.payload.mode === "moon") {
         document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "moon");
       } else {
         document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "sun");
       }
       return {
         ...state,

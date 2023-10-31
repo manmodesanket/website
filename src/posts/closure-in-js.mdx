@@ -1,0 +1,143 @@
+---
+title: Closure in JavaScript
+date: 2022/6/22
+description: Closure in JavaScript
+tag: web development
+author: You
+---
+
+## Introduction
+
+Recently I started to read the book Eloquent JavaScript where I came across this concept called closure. And I have to say I was really impressed with this feature in JavaScript.
+
+In this article we will learn about the concept of Closure in JavaScript with few examples. We will do a code walkthrough as well.
+
+Maybe you will learn few things about functions as well.
+
+In the end I hope you will have clear mental model about Closures in JavaScript.
+Let's get started.
+
+## Important points about functions in JS
+
+Before taking dive into closure, I want you to understand two things about functions in JavaScript.
+
+**The first point I want you to remember is that functions re-creates its local variables every time it is called.**
+
+See the following example,
+
+```js showLineNumbers {6-7}
+function handleTrophies() {
+  let trophies = 0;
+  trophies += 1;
+  console.log(trophies);
+}
+handleTrophies(); // --> 1
+handleTrophies(); // --> 1
+```
+
+The function _handleTrophies_ re-creates value of trophies variable every time it is called. That is why however many times we call the _handleTrophies_ functions the same value will be console logged. It will never be more than one.
+
+Let's move on to the second point.
+
+**The second point is, in JavaScript, functions are not only syntax but value as well. They can be assigned to variables.**
+
+```js showLineNumbers {6}
+function outer() {
+  function inner() {}
+  return inner;
+}
+const fncall = outer();
+console.log(fncall); // ƒ inner () {}
+```
+
+We can see that _fncallholds_ the value which is a function.
+
+If we will write it as _fncall()_, it will work as a function.
+
+## Notion of Closure
+
+These two points above brings an interesting question, what happens to the local values when the function that created them is no longer active?
+
+```js
+function outer() {
+  let temp = 10;
+  function inner() {
+    return temp;
+  }
+  return inner;
+}
+const fncall = outer();
+console.dir(fncall);
+```
+
+In the above example, _fncall_ holds function called _inner_ as a value which is returned by a function called *outer* . The function _outer_ is now no longer active.
+
+The output of above code snippet is as follows.
+
+<div style={{ margin: "1rem auto" }}>
+  <Image
+    src="/closure-blog-1.png"
+    width={500}
+    height={500}
+    alt="closure-blog-1"
+  />
+</div>
+
+We can see that closure has preserved value of **temp**.
+
+This feature of being able to reference a specific instance of local variable in an enclosing scope is called as closure.
+
+It simply means that inner function can access the variable of outer function's variable with help of closure.
+
+So the main feature of closure would be it allows to remember values from completely different scope. To say it in more fancy way, Closure keeps values alive.
+
+Lets look at another example to understand closure better.
+
+```js
+function updateLike() {
+  let like = 5;
+  function handleLike() {
+    like += 1;
+    return like;
+  }
+  return handleLike;
+}
+let call_one = updateLike();
+let call_two = updateLike();
+console.log(call_one()); // 6 --- point 1
+console.log(call_two()); // 6 --- point 2
+console.log(call_one()); // 7 --- point 3
+console.log(call_two()); // 7 --- point 4
+```
+
+Code walkthrough:
+
+1. _call_one_ has the _handleLike_ function body as its value.
+
+2. _call_two_ as well has _handleLike_ function body as its value.
+
+3. But both these values stored in _call_one_ and _call_two_ are not same. Because, the function calls made to _updateLike_ were made separately and it returned a brand new _handleLike_ function as a value each time.
+
+4. When we execute *call_one()* , we are executing the function which _call_one_ has in its value. At point 1, before executing the statement, the value of like stored in closure of _call_one_ is 5.
+
+5. While executing the statement at point 1, the value of like is incremented to 6 from 5 and stored in the scope of _call_one_ as closure.
+
+6. Similarly it will update to 7 at point 3.
+
+7. Now at point 2, before executing the statement the value of like in closure of _call_two_ is 5 and not 6. And then it will be updated to 6.
+
+8. Similarly it will be updated to 7 at point 4.
+
+I hope this example give you a good mental model.
+
+## Points to remember about Closure.
+
+1. Closure is property of JavaScript function alone.
+
+2. When called the function body(in our example _handleLike_) sees the environment in which it was created and not in the environment it is called.
+
+3. The inner function(in our example _handleLike_ or inner) has access to inner variables, the outer function variables and global variables.
+
+4. In JavaScript, closures are created every time a function is created, at function creation time.
+
+This is it from my side on Closure in JavaScript. I hope I am leaving you with good understanding of this topic.
