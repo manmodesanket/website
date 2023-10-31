@@ -25,7 +25,7 @@ Before taking dive into closure, I want you to understand two things about funct
 
 See the following example,
 
-```js
+```js showLineNumbers {6-7}
 function handleTrophies() {
   let trophies = 0;
   trophies += 1;
@@ -41,7 +41,7 @@ Let's move on to the second point.
 
 **The second point is, in JavaScript, functions are not only syntax but value as well. They can be assigned to variables.**
 
-```js
+```js showLineNumbers {6}
 function outer() {
   function inner() {}
   return inner;

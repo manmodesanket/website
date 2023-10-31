@@ -2,11 +2,16 @@ import React from "react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import rehypePrism from "rehype-prism-plus";
-import rehypeCodeTitles from "rehype-code-titles";
+import rehypePrettyCode from "rehype-pretty-code";
 import { components } from "../../components/MdxComponents";
 import Layout from "../../components/Layout/Layout";
 import Header from "../../components/Header/Header";
-import { getAllPosts, getDateInFormat, getPostBySlug } from "../../util/util";
+import {
+  getAllPosts,
+  getDateInFormat,
+  getPostBySlug,
+  rehypePrettyCodeOptions,
+} from "../../util/util";
 
 type Post = {
   title: string;
@@ -35,7 +40,7 @@ export async function getStaticProps(context: { params: any }) {
   const post = getPostBySlug(slug, ["title", "date", "slug", "content"]);
   const mdxSource = await serialize(post.content, {
     mdxOptions: {
-      rehypePlugins: [rehypeCodeTitles, rehypePrism],
+      rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions], rehypePrism],
     },
   });
   const postTitle = post.title;
