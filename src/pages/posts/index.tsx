@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "../../components/Header/Header";
 import Layout from "../../components/Layout/Layout";
 import { getAllPosts, getDateInFormat, Post } from "../../util/util";
+import Head from "next/head";
 
 export async function getStaticProps() {
   const posts = getAllPosts(["title", "date", "slug", "description"]);
@@ -14,6 +15,14 @@ function PostPage({ posts }: { posts: Post[] }) {
   );
   return (
     <div>
+      <Head>
+        <title>Sanket - Posts</title>
+        <meta
+          name="description"
+          content="Sanket Manmode - My thoughts about tech and life"
+        />
+        <link rel="icon" href="/double-angle-right-white.svg" />
+      </Head>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />
         <Layout>
