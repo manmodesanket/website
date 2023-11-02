@@ -12,10 +12,12 @@ import {
   getPostBySlug,
   rehypePrettyCodeOptions,
 } from "../../util/util";
+import Head from "next/head";
 
 type Post = {
   title: string;
   date: string;
+  description: string;
   source: MDXRemoteSerializeResult<
     Record<string, unknown>,
     Record<string, unknown>
@@ -37,7 +39,13 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: { params: any }) {
   const { params } = context;
   const { slug } = params;
-  const post = getPostBySlug(slug, ["title", "date", "slug", "content"]);
+  const post = getPostBySlug(slug, [
+    "title",
+    "date",
+    "slug",
+    "content",
+    "description",
+  ]);
   const mdxSource = await serialize(post.content, {
     mdxOptions: {
       rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions], rehypePrism],
@@ -45,9 +53,15 @@ export async function getStaticProps(context: { params: any }) {
   });
   const postTitle = post.title;
   const postDate = post.date;
+  const postDescription = post.description;
   return {
     props: {
-      post: { date: postDate, title: postTitle, source: mdxSource },
+      post: {
+        date: postDate,
+        description: postDescription,
+        title: postTitle,
+        source: mdxSource,
+      },
       slug,
     }, // will be passed to the page component as props
   };
@@ -56,6 +70,11 @@ export async function getStaticProps(context: { params: any }) {
 const Intro: React.FC<{ post: Post; slug: string }> = ({ post }) => {
   return (
     <div>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.description} />
+        <link rel="icon" href="/double-angle-right.svg" />
+      </Head>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />
         <Layout>

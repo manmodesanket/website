@@ -14,7 +14,7 @@ const Home: NextPage = () => {
           content="I am Sanket Manmode a software
             engineer. Welcome to my space on internet."
         />
-        <link rel="icon" href="/ms.svg" />
+        <link rel="icon" href="/double-angle-right.svg" />
       </Head>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />
