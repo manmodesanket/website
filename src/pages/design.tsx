@@ -13,7 +13,7 @@ const Design: NextPage = () => {
           name="description"
           content="Design of my portfolio site Sanket Manmode - manmodesanket"
         />
-        <link rel="icon" href="/ms.svg" />
+        <link rel="icon" href="/double-angle-right-white.svg" />
       </Head>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />

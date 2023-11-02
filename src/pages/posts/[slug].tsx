@@ -73,7 +73,7 @@ const Intro: React.FC<{ post: Post; slug: string }> = ({ post }) => {
       <Head>
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
-        <link rel="icon" href="/double-angle-right.svg" />
+        <link rel="icon" href="/double-angle-right-white.svg" />
       </Head>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />

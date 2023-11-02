@@ -21,7 +21,7 @@ function PostPage({ posts }: { posts: Post[] }) {
           name="description"
           content="Sanket Manmode - My thoughts about tech and life"
         />
-        <link rel="icon" href="/double-angle-right.svg" />
+        <link rel="icon" href="/double-angle-right-white.svg" />
       </Head>
       <div className="w-full min-h-screen bg-white dark:bg-navy dark:text-slate-200">
         <Header />
