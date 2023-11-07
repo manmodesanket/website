@@ -1,8 +1,12 @@
 import React from "react";
 
-const Link: React.FC<{ link: string; text: string }> = ({ link, text }) => {
+const Link: React.FC<{ className?: string; link: string; text: string }> = ({
+  className,
+  link,
+  text,
+}) => {
   return (
-    <a target="_blank" rel="noreferrer" href={link}>
+    <a className={className} target="_blank" rel="noreferrer" href={link}>
       {text}
     </a>
   );

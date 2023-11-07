@@ -30,7 +30,7 @@ function PostPage({ posts }: { posts: Post[] }) {
             <div key={item.slug} className="mb-4">
               <h3>
                 <Link
-                  className="text-black hover:underline"
+                  className="text-sky-700 underline decoration-sky-400 decoration-2 hover:bg-sky-200"
                   href={`/posts/${item.slug}`}
                 >
                   {item.title}
