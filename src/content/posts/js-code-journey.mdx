@@ -48,8 +48,14 @@ JavaScript was Interpreted language by design. Interpreter is something which ex
 
 Generally modern browsers will have two compilers a base line compiler and a optimizing compiler. If some part of code is getting run repeatedly, it will be passed to optimizing compiler which will optimize that code for faster running. Optimizing compiler uses previously seen type information (don't change type!)
 
-<div style={{ margin: "1rem auto" }}>
-  <Image src="/js-engine.png" width={500} height={500} alt="js engine" />
+<div>
+  <Image
+    className="rounded-md my-4 mx-auto"
+    src="/js-engine.png"
+    width={500}
+    height={500}
+    alt="js engine"
+  />
 </div>
 
 Reused functions are marked as "hot"
