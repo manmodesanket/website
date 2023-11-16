@@ -5,9 +5,8 @@ import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sanket Manmode - manmodesanket",
-  description:
-    "I am Sanket Manmode a software engineer. Welcome to my space on internet.",
+  title: "Posts - manmodesanket",
+  description: "Posts by Sanket Manmode",
 };
 
 function PostPage() {
