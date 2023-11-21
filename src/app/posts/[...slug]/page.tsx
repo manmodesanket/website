@@ -1,7 +1,9 @@
+import { Metadata } from "next";
+import { cache } from "react";
+
 import { notFound } from "next/navigation";
 import { allPosts } from "contentlayer/generated";
 
-import { Metadata } from "next";
 import { Mdx } from "../../../components/mdx-components";
 import Layout from "../../../components/Layout/Layout";
 import Header from "../../../components/Header/Header";
@@ -23,10 +25,12 @@ async function getPostFromParams(params: PostProps["params"]) {
   return post;
 }
 
+const cachedGetPost = cache(getPostFromParams);
+
 export async function generateMetadata({
   params,
 }: PostProps): Promise<Metadata> {
-  const post = await getPostFromParams(params);
+  const post = await cachedGetPost(params);
 
   if (!post) {
     return {};
@@ -45,7 +49,7 @@ export async function generateStaticParams(): Promise<PostProps["params"][]> {
 }
 
 export default async function PostPage({ params }: PostProps) {
-  const post = await getPostFromParams(params);
+  const post = await cachedGetPost(params);
 
   if (!post) {
     notFound();
