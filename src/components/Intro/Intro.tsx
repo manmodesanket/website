@@ -32,8 +32,8 @@ const Intro: React.FC<{}> = () => {
             I am a <b>Frontend Engineer at</b>{" "}
             <Link
               className="text-sky-700 underline decoration-sky-400 decoration-2 hover:bg-sky-200"
-              link="https://ridecell.com/"
-              text="Ridecell"
+              link="https://appzen.com/"
+              text="Appzen"
             />{" "}
             building things for the web with some awesome people. I am also a
             graduate from{" "}
